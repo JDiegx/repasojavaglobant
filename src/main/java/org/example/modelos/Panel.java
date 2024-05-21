@@ -1,5 +1,7 @@
 package org.example.modelos;
 
+import org.example.helpers.validaciones.PanelValidacion;
+
 public class Panel {
 
     private Integer id;
@@ -7,6 +9,8 @@ public class Panel {
     private Double capacidad;
     private String tamano;
     private String fabricante;
+
+    PanelValidacion panelValidacion = new PanelValidacion();
 
     public Panel() {
     }
@@ -24,7 +28,9 @@ public class Panel {
     }
 
     public void setId(Integer id) {
+
         this.id = id;
+
     }
 
     public Double getAutonomia() {
@@ -32,7 +38,14 @@ public class Panel {
     }
 
     public void setAutonomia(Double autonomia) {
-        this.autonomia = autonomia;
+        try{
+            this.panelValidacion.validarAutonomia(autonomia);
+            this.autonomia = autonomia;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     public Double getCapacidad() {

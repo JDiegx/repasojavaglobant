@@ -14,17 +14,18 @@ public class PanelValidacion {
         String autonomiaCadena=String.valueOf(autonomia);
         Pattern patron = Pattern.compile(regex);
         Matcher coincidencia= patron.matcher(autonomiaCadena);
+
         if(!coincidencia.matches()){
             throw new Exception(Mensaje.MENSAJE_NUMEROS.getMensaje());
         }
 
         //no negativos
-        if(autonomia<0.0){
+        if(autonomia < 0.0){
             throw new Exception(Mensaje.ERROR_MENSAJE_N_NEGATIVOS.getMensaje());
         }
 
         //numero maximo 30.0
-        if(autonomia>30.0){
+        if(autonomia > 30.0){
             throw new Exception(Mensaje.ERROR_NUMERO_MAXIMO.getMensaje());
         }
 
